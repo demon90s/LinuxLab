@@ -12,7 +12,10 @@
     PS: 这个数量没有限制. 是可以打开的最大文件描述符数量. see: `cat /proc/sys/fs/file-max`
 
     epoll_ctl 用来增加、修改、删除在 fd 上监听的事件类型。
+    事件类型可以有：EPOLLIN(fd关联的缓冲区可读)，EPOLLOUT(fd关联的缓冲区可写)
+
     op 的取值可以是： EPOLL_CTL_ADD, EPOLL_CTL_MOD, EPOLL_CTL_DEL 。
+
     struct epoll_event {
         __unit32 events;        // 可取值 EPOLLIN 读, EPOLLOUT 写 ...
         epoll_data_t data;      // user data
@@ -22,7 +25,7 @@
         int fd;
     } epoll_data_t;
 
-    epoll_wait 等待事件的产生， events 从内核得到事件的集合， maxevents 告诉内核这个 events 有多大， 不能大于 epoll_create 的 size
+    epoll_wait 等待IO事件的产生， events 从内核得到事件的集合， maxevents 告诉内核这个 events 有多大， 不能大于 epoll_create 的 size
     timeout 是毫秒级别的超时时间，如果取值-1代表阻塞等待。
     函数返回需要处理的事件数目，返回0代表超时。
 */
@@ -90,7 +93,7 @@ void do_read(int epollfd, int fd, char *buf)
     }
     else {
         printf("read msg is: %s\n", buf);
-        modify_event(epollfd, fd, EPOLLOUT);
+        modify_event(epollfd, fd, EPOLLOUT);        // 设置成 EPOLLOUT, 表示告知内核可以往fd的缓冲区写了
     }
 }
 
@@ -141,7 +144,7 @@ void handle_accept(int epollfd, int listenfd)
 {
     int clifd;
     struct sockaddr_in cliaddr;
-    socklen_t cliaddrlen;
+    socklen_t cliaddrlen = sizeof(cliaddr);
     clifd = accept(listenfd, (struct sockaddr*)&cliaddr, &cliaddrlen);
     if (clifd == -1) {
         perror("accept");

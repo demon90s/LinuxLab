@@ -7,6 +7,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void send_some_char(int sockfd, char ch)
+{
+	// 发送几次字符，然后接收响应
+	for (int i = 0; i < 5; ++i)
+    {
+        write(sockfd, &ch, 1);
+        read(sockfd, &ch, 1);
+        printf("char from server = %c\n", ch);
+
+        sleep(1);
+    }
+}
+
 int main()
 {
 	int sockfd;
@@ -32,17 +45,9 @@ int main()
 	}
 
 	// You can now read and write via sockfd
-    for (int i = 0; i < 5; ++i)
-    {
-        write(sockfd, &ch, 1);
-        read(sockfd, &ch, 1);
-        printf("char from server = %c\n", ch);
-
-        sleep(1);
-    }
+	send_some_char(sockfd, ch);
 	
 	close(sockfd);
 
 	exit(0);
 }
-
