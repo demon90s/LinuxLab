@@ -3,21 +3,23 @@
 # Which compiler
 CC = gcc
 
-# Where to install
-INSTDIR = ./bin
-
 # Where are include files kept
 INCLUDE = .
 
 # Options for development
-CFlags = -g -Wall
+CFLAGS = -g -Wall
 
 # Options for release
 # CFLAGS = -O -Wall
+
+# Options for ar flags
+ARFLAGS = Urv
 
 LIBCORE = libcore.a
 
 $(LIBCORE): $(LIBCORE)(core.o)
 
+core.o: core.c core.h
+
 clean:
-	-rm -f libcore.a
+	-rm -f libcore.a *.o

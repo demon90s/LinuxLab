@@ -10,7 +10,7 @@ INSTDIR = ./bin
 INCLUDE = .
 
 # Options for development
-CFlags = -g -Wall
+CFLAGS = -g -Wall
 
 # Options for release
 # CFLAGS = -O -Wall

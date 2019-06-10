@@ -5,4 +5,5 @@
 BOOL foo()
 {
 	print("foo:", "this is foo~");
+	return TRUE;
 }

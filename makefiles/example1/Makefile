@@ -1,4 +1,4 @@
-# Makefile 例子
+# Makefile 例子（比较完整的例子）
 
 # Which compiler
 CC = gcc
@@ -10,7 +10,7 @@ INSTDIR = ./bin
 INCLUDE = .
 
 # Options for development
-CFlags = -g -Wall
+CFLAGS = -g -Wall
 
 # Options for release
 # CFLAGS = -O -Wall
@@ -18,7 +18,6 @@ CFlags = -g -Wall
 LIBCORE = libcore.a
 
 myapp: main.o bar.o foo.o $(LIBCORE)
-	$(CC) -o myapp main.o bar.o foo.o lib/$(LIBCORE)
 
 # 进入子目录构建
 $(LIBCORE):
