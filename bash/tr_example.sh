@@ -8,3 +8,6 @@ echo ${some_words}
 
 # 将所有小写字母转换成大写字母
 echo ${some_words} | tr a-z A-Z
+
+# 将所有的o转换成0
+echo ${some_words} | tr "o" "0"
