@@ -19,14 +19,14 @@ void*
 thr_fn1(void *arg)
 {
     printf("thread 1 returning\n");
-    return ((void*)1);
+    pthread_exit ((void*)1);
 }
 
 void*
 thr_fn2(void *arg)
 {
     printf("thread 2 returning\n");
-    return ((void*)2);
+    pthread_exit ((void*)2);
 }
 
 int
