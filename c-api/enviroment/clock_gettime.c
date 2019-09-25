@@ -4,7 +4,7 @@
 
     获取一个时间, 其意义由 clk_id 决定, 它可以取值:
     - CLOCK_MONOTONIC, 表示系统启动至今的时间
-    - CLOCK_REALTIME, 表示系统时钟
+    - CLOCK_REALTIME, 表示系统时钟（UNIX TIME）
 
     struct timespec {
         time_t tv_sec;          // seconds
