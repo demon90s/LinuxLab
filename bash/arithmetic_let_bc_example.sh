@@ -7,6 +7,16 @@ example1()
 {
     expr="3 * 4"
     echo "$expr = $(($expr))"
+
+    # 幂运算
+    expr="3 ** 2"
+    echo "$expr = $(($expr))"
+
+    num=1
+    let num=num+20
+    echo $num
+    let num-=10
+    echo $num
 }
 
 # 方法二：使用 $[ expr ] ，与方法一等价
@@ -42,10 +52,10 @@ example4()
 
 main()
 {
-    #example1
+    example1
     #example2
     #example3
-    example4
+    #example4
 }
 
 main
