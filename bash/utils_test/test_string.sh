@@ -30,3 +30,10 @@ fi
 if ! $(string_empty $str) ; then
     echo "string is not empty"
 fi
+
+str="hello world   yeyeye   wow"
+str=$(string_erase_blanks "$str")
+echo $str
+
+str="1200|1300|2500|600"
+string_slice $str "|"

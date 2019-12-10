@@ -41,3 +41,24 @@ string_not_empty()
         echo false
     fi
 }
+
+string_erase_blanks()
+{
+    local str="$1"
+    str=${str//[[:blank:]]/}
+    echo $str
+}
+
+string_slice()
+{
+    local str="$1"
+    local ifs="$2"
+
+    local old_ifs=$IFS
+    IFS="$ifs"
+    for v in "$str"; do
+        echo $v
+    done
+
+    IFS=$old_ifs
+}
