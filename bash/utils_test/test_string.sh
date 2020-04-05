@@ -2,11 +2,11 @@
 
 . ../utils/string.sh
 
-if $(string_equal A B) ; then
+if string_equal A B ; then
     echo "EQUAL"
 fi
 
-if $(string_equal AB AB) ; then
+if string_equal AB AB ; then
     echo "AB EQUAL"
 fi
 

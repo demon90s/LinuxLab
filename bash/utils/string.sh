@@ -5,9 +5,9 @@ string_equal()
     local lhs="$1"
     local rhs="$2"
     if [ "$lhs" = "$rhs" ]; then
-        echo true
+        return 0
     else
-        echo false
+        return 1
     fi
 }
 

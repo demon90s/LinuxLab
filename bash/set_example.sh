@@ -5,11 +5,12 @@
 
 test1()
 {
+    # 设置函数的参数（即$1 $2 ...）
     set hello world
 
     echo $0     # 第一个参数没有改变，还是程序名字
-    echo $1
-    echo $2
+    echo $1     # hello
+    echo $2     # world
 }
 
 # set -o/+o
@@ -32,11 +33,45 @@ test3()
     echo "Normal return"
 }
 
+test_xtrace()
+{
+    # xtrace 表示将输出脚本实际执行的内容
+    # 同 set -x
+    set -o xtrace
+
+    HELLO="hello world"
+    echo $HELLO
+
+    set +o xtrace
+}
+
+test_errexit()
+{
+    # Exit immediately if a command exits with a non-zero status.
+    # 同 set -e
+
+    set -o errexit
+
+    #rm -f /usr/bin/
+
+    set +o errexit
+
+    echo "Normal return"
+}
+
 main()
 {
-    #test1
+    test1
     #test2
     test3
+
+    echo "===test_xtrace begin==="
+    test_xtrace
+    echo "===test xtrace end==="
+
+    echo "===test_errexit begin==="
+    test_errexit
+    echo "===test_errexit end==="
 }
 
 main
