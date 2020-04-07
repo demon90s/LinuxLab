@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -e
+
 # -f 表示文件存在
 if [ -f /bin/bash ]
 then
@@ -26,6 +28,9 @@ fi
 # ! 取反
 [ ! -n "Hi" ] && echo "string empty" || echo "string not empty"
 
+# 字符串比较，字典序
+[[ "Hello" > "Hi" ]] && echo "Hello > Hi" || echo "Hello <= Hi"
+
 # 自定义函数
 is_odd()
 {
@@ -42,5 +47,7 @@ if is_odd 8; then
 else
     echo "is not odd num"
 fi
+
+echo "[TEST] test PASS"
 
 exit 0
