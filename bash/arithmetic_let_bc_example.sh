@@ -2,15 +2,29 @@
 
 # 算术运算
 
-# 方法一：使用 $(( expr ))
+# 整数运算
 example1()
 {
-    expr="3 * 4"
-    echo "$expr = $(($expr))"
+    local n1=2
+    local n2=3
+
+    # 加
+    echo $((n1 + n2))               # 5
+
+    # 减
+    echo $((n1 - n2))               # -1
+
+    # 乘
+    echo $((n1 * n2))               # 6
+
+    # 除
+    echo $((n2 / n1))               # 1
+
+    # 取余
+    echo $((n2 % n1))               # 1
 
     # 幂运算
-    expr="3 ** 2"
-    echo "$expr = $(($expr))"
+    echo $((n1 ** n2))              # 8
 
     num=1
     let num=num+20
@@ -19,19 +33,35 @@ example1()
     echo $num
 }
 
-# 方法二：使用 $[ expr ] ，与方法一等价
+# 整数运算，使用 $[ expr ] ,与上面的等价
 example2()
 {
     expr="3 * 4"
     echo "$expr = $[$expr]"
 }
 
-# 方法三，使用 bc 命令，它支持浮点运算，而上面的只支持简单的整数运算
+# 使用 bc 命令，它支持浮点运算，而上面的只支持简单的整数运算
 example3()
 {
-    expr="3 / 4"
-    res=$(echo $expr | bc -l)
-    echo "$expr = $res"
+    # bc -l 将小数点位数设置为20位
+    
+    local n1=2.5
+    local n2=2
+
+    # 加
+    echo "$n1 + $n2" | bc -l                   # 4.5
+
+    # 减
+    echo "$n1 - $n2" | bc -l                   # 0.5
+
+    # 乘
+    echo "$n1 * $n2" | bc -l                   # 5.0
+
+    # 除法
+    echo "$n1 / $n2" | bc -l                   # 1.25
+
+    # 幂运算
+    echo "$n1 ^ $n2" | bc -l                   # 6.25
 }
 
 # 使用 bc 进行进制转换
@@ -52,9 +82,9 @@ example4()
 
 main()
 {
-    example1
+    #example1
     #example2
-    #example3
+    example3
     #example4
 }
 

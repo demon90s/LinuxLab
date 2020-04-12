@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# case 支持 pattern
+
 echo "Is it morning? Please enter yes or no"
 read timeofday
 

@@ -2,6 +2,8 @@
 
 set -e
 
+thisfile=$0
+
 # -f 表示文件存在
 if [ -f /bin/bash ]
 then
@@ -14,6 +16,21 @@ then
     echo "/bin/bash is a directory"
 else
     echo "/bin/bash is not a directory"
+fi
+
+# -w 表示文件可写
+if [ -w $thisfile ]; then
+    echo "$thisfile can write"
+fi
+
+# -r 表示文件可读
+if [ -r $thisfile ]; then
+    echo "$thisfile can read"
+fi
+
+# -x 表示文件可执行
+if [ -x $thisfile ]; then
+    echo "$thisfile can execute"
 fi
 
 # -z 表示字符串为空
