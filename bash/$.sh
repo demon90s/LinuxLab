@@ -1,6 +1,6 @@
 #! /bin/bash
 
-set -e
+set -ex
 
 # 重置脚本参数
 set param1 param2 hello world

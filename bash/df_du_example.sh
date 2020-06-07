@@ -15,10 +15,18 @@ f_test_du()
 	du -h --max-depth=1 ..
 }
 
+# du -s 可以输出目标总占用空间
+f_test_du2()
+{
+	# 输出当前目录所占用的空间
+	du -sh .
+}
+
 f_main()
 {
 	#f_test_df
-	f_test_du
+	#f_test_du
+	f_test_du2
 }
 
 f_main $@

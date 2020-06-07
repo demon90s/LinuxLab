@@ -33,6 +33,7 @@ example3()
 # 压缩存档
 # -Z 压缩过滤
 # 如果找不到 compress 命令，则 sudo apt install ncompress
+# 也可以用小z （用的是gzip）
 example4()
 {
     tar -cvZf ${archive}.gz $files

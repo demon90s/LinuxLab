@@ -22,6 +22,14 @@ test3()
     cp -i ./cp_examples.sh /tmp/cp_examples.sh
 }
 
+# cp -R 表示递归拷贝一个目录
+# 如果aoa已经存在，那么wow会同名拷贝到aoa下面。
+# 如果aoa不存在，那么拷贝wow的副本，名字叫做aoa
+test4()
+{
+    cp -R wow/ aoa/
+}
+
 main()
 {
     #test1
