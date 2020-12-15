@@ -9,3 +9,6 @@ cd $(dirname `/usr/sbin/lsof -p $$ | gawk '$4 =="255r"{print $NF}'`)
 
 # 获取一个时间点（年月日时分秒）
 date +"%Y%m%d%H%M%S"
+
+# 获取本机IP
+curl -s "whatismyip.akamai.com"
