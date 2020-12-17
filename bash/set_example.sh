@@ -31,6 +31,9 @@ test3()
     set -o noclobber
     echo "haha" > ./date.sh
     echo "Normal return"
+
+    # 通常要设置回去
+    set +o noclobber
 }
 
 test_xtrace()
