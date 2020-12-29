@@ -25,9 +25,11 @@ example2()
 
 # 从归档文件中提取文件
 # -x 从归档文件中提取文件
+# -C <dir> 提取到指定的目录，不加这个参数就是提取到当前的目录
 example3()
 {
     tar -xf $archive
+    # tar -xf $archive -C /tmp
 }
 
 # 压缩存档
